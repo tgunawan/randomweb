@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Page Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background: #f7f7f7;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav {
+            margin-top: 1rem;
+        }
+        nav button {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 5px;
+            color: white;
+            margin: 0 0.5rem;
+            padding: 0.6rem 1rem;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        nav button:hover,
+        nav button.active {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        .section-container {
+            display: none;
+            padding: 2rem;
+            min-height: calc(100vh - 100px);
+            box-sizing: border-box;
+        }
+        .section-container.active {
+            display: block;
+        }
+        #home-section {
+            background-color: #f4f4f4;
+        }
+        #course-section {
+            background-color: #e2e2e2;
+        }
+        #about-section {
+            background-color: #d0d0d0;
+        }
+        .course-layout {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        .course-left,
+        .course-right {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            padding: 1.5rem;
+            flex: 1 1 320px;
+        }
+        .course-left {
+            min-width: 320px;
+        }
+        .course-right {
+            min-width: 280px;
+        }
+        .tool-list {
+            display: grid;
+            gap: 0.75rem;
+        }
+        .tool-list button {
+            border: 1px solid #999;
+            border-radius: 8px;
+            background: #f7f7f7;
+            padding: 0.9rem 1rem;
+            cursor: pointer;
+            text-align: left;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+        .tool-list button:hover,
+        .tool-list button.active {
+            background: #333;
+            color: white;
+            transform: translateX(3px);
+            border-color: #333;
+        }
+        .tool-detail {
+            margin-top: 1.25rem;
+            padding: 1rem;
+            border-radius: 10px;
+            background: #fafafa;
+            min-height: 180px;
+        }
+        .tool-detail h3 {
+            margin-top: 0;
+        }
+        .tool-detail p {
+            margin: 0.75rem 0 0;
+        }
+        h1, h2 {
+            margin-bottom: 1rem;
+        }
+        p {
+            max-width: 700px;
+            text-align: center;
+            margin: 0 auto;
+        }
+        @media (max-width: 800px) {
+            .course-layout {
+                flex-direction: column;
+            }
+            nav button {
+                margin: 0.35rem 0.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Website</h1>
+        <nav>
+            <button type="button" data-target="home-section" class="active">Home</button>
+            <button type="button" data-target="course-section">Course</button>
+            <button type="button" data-target="about-section">About Me</button>
+        </nav>
+    </header>
+
+    <section id="home-section" class="section-container active">
+        <h2>Home</h2>
+        <p>Selamat datang di halaman utama. Klik menu di atas untuk berpindah ke section Course atau About Me.</p>
+    </section>
+
+    <section id="course-section" class="section-container">
+        <h2>Course</h2>
+        <div class="course-layout">
+            <div class="course-right">
+                <h3>Tools</h3>
+                <div class="tool-list">
+                    <button type="button" data-tool="python" class="active">Python</button>
+                    <button type="button" data-tool="roblox">Roblox</button>
+                    <button type="button" data-tool="blender">Blender</button>
+                    <button type="button" data-tool="cpp">C++</button>
+                </div>
+            </div>
+            <div class="course-left">
+                <h3>Course Overview</h3>
+                <p>Pilih salah satu tools di sisi kiri untuk melihat informasi kursus dan konten yang tersedia.</p>
+                <div class="tool-detail" id="tool-detail">
+                    <h3 id="tool-title">Python</h3>
+                    <p id="tool-description">Pelajari dasar-dasar Python, pemrograman skrip, dan pembuatan proyek sederhana untuk pemula dan pengguna menengah.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about-section" class="section-container">
+        <h2>About Me</h2>
+        <p>Saya adalah seorang pembuat konten dan pengembang web yang senang berbagi pengetahuan tentang pemrograman dan desain. Temukan banyak pilihan materi praktis di halaman Course.</p>
+    </section>
+
+    <script>
+        const sectionButtons = document.querySelectorAll('nav button');
+        const sections = document.querySelectorAll('.section-container');
+        sectionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                sectionButtons.forEach(btn => btn.classList.remove('active'));
+                sections.forEach(section => section.classList.remove('active'));
+                button.classList.add('active');
+                document.getElementById(button.dataset.target).classList.add('active');
+            });
+        });
+
+        const tools = {
+            python: {
+                title: 'Python',
+                description: 'Pelajari Python untuk membuat skrip, aplikasi kecil, dan memahami konsep dasar pemrograman modern.'
+            },
+            roblox: {
+                title: 'Roblox',
+                description: 'Belajar membuat game di Roblox Studio dengan Lua, mulai dari dunia 3D sederhana hingga mekanik permainan interaktif.'
+            },
+            blender: {
+                title: 'Blender',
+                description: 'Pelajari Blender untuk membuat model 3D, animasi, dan efek visual dengan antarmuka dan workflow profesional.'
+            },
+            cpp: {
+                title: 'C++',
+                description: 'Pelajari C++ untuk memahami pemrograman berorientasi objek, performa tinggi, dan pengembangan aplikasi desktop/engine.'
+            }
+        };
+
+        const toolButtons = document.querySelectorAll('.tool-list button');
+        const toolTitle = document.getElementById('tool-title');
+        const toolDescription = document.getElementById('tool-description');
+
+        toolButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                toolButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                const tool = tools[button.dataset.tool];
+                toolTitle.textContent = tool.title;
+                toolDescription.textContent = tool.description;
+            });
+        });
+    </script>
+</body>
+</html>
