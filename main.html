@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Page Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav {
+            margin-top: 1rem;
+        }
+        nav a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        section {
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #home {
+            background-color: #f4f4f4;
+        }
+        #course {
+            background-color: #e2e2e2;
+        }
+        #about {
+            background-color: #d0d0d0;
+        }
+        h1, h2 {
+            margin-bottom: 1rem;
+        }
+        p {
+            max-width: 600px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Website</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#course">Course</a>
+            <a href="#about">About Me</a>
+        </nav>
+    </header>
+
+    <section id="home">
+        <h2>Home</h2>
+        <p>Welcome to my single page website. This is the home section where you can find an introduction to what I offer.</p>
+    </section>
+
+    <section id="course">
+        <h2>Course</h2>
+        <p>Here you can learn about the courses I provide. From beginner to advanced levels, there's something for everyone.</p>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Learn more about me, my background, and my passion for teaching and web development.</p>
+    </section>
+</body>
+</html>

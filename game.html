@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Offline Game</title>
+</head>
+<body>
+  <h1>Game Demo</h1>
+  <button onclick="nextLevel()">Next Level</button>
+  <button onclick="resetProgress()">Reset Progress</button>
+  <p id="status"></p>
+
+  <script>
+    let currentLevel = localStorage.getItem('progress') || 1;
+    document.getElementById('status').innerText = "Level: " + currentLevel;
+
+    function nextLevel() {
+      currentLevel++;
+      localStorage.setItem('progress', currentLevel);
+      document.getElementById('status').innerText = "Level: " + currentLevel;
+    }
+
+    function resetProgress() {
+      localStorage.removeItem('progress');
+      currentLevel = 1;
+      document.getElementById('status').innerText = "Level: " + currentLevel;
+    }
+  </script>
+</body>
+</html>
