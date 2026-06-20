@@ -5,6 +5,10 @@ body {
     padding: 0;
     background-color: #f0f2f5;
 }
+header{
+
+    text-align: center;
+}
 
 /* KUNCI KANAN-KIRI: Wadah utama dibagi menggunakan Flexbox */
 .main-container {
@@ -80,4 +84,8 @@ body {
     width: 100%;
     height: 100%;
     border: none; /* Menghilangkan garis bingkai bawaan iframe */
+}
+h2{
+    color: #1a63d8;
+    font-size: 24px;
 }
