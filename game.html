@@ -5,13 +5,29 @@
 </head>
 <body>
   <h1>Game Demo</h1>
+  
+  <label for="username">Insert user:</label>
+  <input type="text" id="username" placeholder="Nama kamu" />
+  <button id="greetBtn">Submit</button>
+  <p id="greeting">Selamat datang, user</p>
+
+
   <button onclick="nextLevel()">Next Level</button>
   <button onclick="resetProgress()">Reset Progress</button>
   <p id="status"></p>
 
   <script>
+    const usernameInput = document.getElementById('username');
+    const greetBtn = document.getElementById('greetBtn');
+    const greeting = document.getElementById('greeting');
+
     let currentLevel = localStorage.getItem('progress') || 1;
     document.getElementById('status').innerText = "Level: " + currentLevel;
+
+    greetBtn.addEventListener('click', () => {
+      const name = usernameInput.value.trim() || 'user';
+      greeting.innerText = `Selamat datang, ${name}`;
+    });
 
     function nextLevel() {
       currentLevel++;
